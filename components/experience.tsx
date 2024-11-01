@@ -22,9 +22,11 @@ import {
 export default function Experience() {
   const { ref } = useSectionInView("Experience");
   const { theme } = useTheme();
-  const [expandedItems, setExpandedItems] = useState({});
+  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
+
 
   const toggleExpand = (index:number) => {
+   
     setExpandedItems(prev => ({
       ...prev,
       [index]: !prev[index]
