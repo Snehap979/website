@@ -4,14 +4,12 @@ import { Eye, ExternalLink, Code } from "lucide-react";
 import Image from "next/image";
 import { projectsData } from "@/lib/data";
 
-
-
-
 type ProjectData = (typeof projectsData)[number];
 
 type ProjectCardProps = ProjectData;
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
   description,
   tags,
   imageUrl,
