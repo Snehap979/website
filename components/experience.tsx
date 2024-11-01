@@ -24,7 +24,7 @@ export default function Experience() {
   const { theme } = useTheme();
   const [expandedItems, setExpandedItems] = useState({});
 
-  const toggleExpand = (index) => {
+  const toggleExpand = (index:number) => {
     setExpandedItems(prev => ({
       ...prev,
       [index]: !prev[index]
