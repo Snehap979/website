@@ -63,7 +63,8 @@ function calls on tab clicks.`,
 Store for rack stock-keeping units for retailers and inventory using Node.js.
 ● Implemented a feature to enhance bug-fixing processes post-production deployment with automated testing scripts,
 resulting in a 25% reduction in bug resolution time and a 20% increase in overall system stability.`,
-    organization: "Accenture",
+    organization: "O4S",
+    date: "May 2022 - July 2022",
   },
   
   {
