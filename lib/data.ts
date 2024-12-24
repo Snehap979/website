@@ -48,6 +48,16 @@ function calls on tab clicks.`,
     organization: "EnCiv",
   },
   {
+    title: "Project Contributor",
+    location: "India",
+    description:`● Architected and implemented a real-time communication platform leveraging AWS Lambda and API Gateway,enabling instant
+message delivery with latency under 100ms with She Builds.
+● Integrated DynamoDB for message storage and user management, enabling seamless handling of over 1000 messages per
+minute while automating scaling processes to accommodate traffic spikes during peak usage times.`,
+    date: "September 2022 - December 2022",
+    organization: "Amazon",
+  },
+  {
     title: "Graduated, MS in COMPUTER SCIENCE",
     location: "Fullerton,California",
     description:
