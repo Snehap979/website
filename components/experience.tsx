@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Image from "next/image";
 import SectionHeading from "./section-heading";
 import {
   VerticalTimeline,
@@ -11,9 +12,6 @@ import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 import { 
-  Briefcase, 
-  ChevronDown, 
-  ChevronUp,
   MapPin,
   Calendar,
   Sparkles
@@ -22,16 +20,6 @@ import {
 export default function Experience() {
   const { ref } = useSectionInView("Experience");
   const { theme } = useTheme();
-  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
-
-
-  const toggleExpand = (index:number) => {
-   
-    setExpandedItems(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40">
@@ -66,7 +54,29 @@ export default function Experience() {
                     : "0.4rem solid rgba(255, 255, 255, 0.5)",
               }}
               date={item.date}
-              icon={<Briefcase />}
+              icon={
+                item.companyLogo ? (
+                  <div className="flex items-center justify-center w-full h-full bg-white rounded-full overflow-hidden">
+                    <Image
+                      src={item.companyLogo}
+                      alt={`${item.organization} logo`}
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center w-full h-full">
+                    <Image
+                      src={item.companyLogo}
+                      alt={`${item.organization} logo`}
+                      width={40}
+                      height={40}
+                      className="object-contain"
+                    />
+                  </div>
+                )
+              }
               iconStyle={{
                 background:
                   theme === "light" ? "white" : "rgba(255, 255, 255, 0.15)",
@@ -74,25 +84,19 @@ export default function Experience() {
               }}
               className="hover:-translate-y-1 transition-transform"
             >
-              {/* Header Section */}
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold capitalize text-lg">{item.title}</h3>
-                <button
-                  onClick={() => toggleExpand(index)}
-                  className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                >
-                  {expandedItems[index] ? (
-                    <ChevronUp size={20} />
-                  ) : (
-                    <ChevronDown size={20} />
-                  )}
-                </button>
               </div>
               
-              {/* Organization and Location */}
               <div className="space-y-1 mt-2">
                 <div className="flex items-center gap-2 text-sm">
-                  <Briefcase className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                  <Image 
+                    alt={`${item.organization} logo`} 
+                    src={item.companyLogo}
+                    width={16}
+                    height={16}
+                    className="text-gray-600 dark:text-gray-400" 
+                  />
                   <span className="font-medium text-gray-800 dark:text-gray-300">
                     {item.organization}
                   </span>
@@ -111,10 +115,7 @@ export default function Experience() {
                 </div>
               </div>
 
-              {/* Description with bullet points */}
-              <div className={`mt-4 transition-all duration-300 overflow-hidden ${
-                expandedItems[index] ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-              }`}>
+              <div className="mt-4">
                 <ul className="list-disc pl-4 space-y-2 text-gray-700 dark:text-white/75 text-sm">
                   {item.description.split('●').filter(Boolean).map((point, pointIndex) => (
                     <li 

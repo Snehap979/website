@@ -11,11 +11,11 @@ export default function Home() {
     <main className="flex flex-col items-center px-4">
       <Intro />
       <SectionDivider />
-      <About />
+      {/* <About /> */}
       <Experience />
-      <Projects />
-      <Skills />
      
+      <Skills />
+      <Projects />
       <Contact />
     </main>
   );
